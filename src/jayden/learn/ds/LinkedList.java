@@ -8,6 +8,10 @@ public class LinkedList {
         this.head = null;
     }
 
+    public Node getHead() {
+        return head;
+    }
+
     public Object checkHead() {
         return this.head == null ? null : this.head.getData();
     }

@@ -4,9 +4,9 @@ import jayden.learn.ds.Queue;
 
 public class RestaurantOrders {
 
-    public Queue headChef;
-    public Queue sousChef;
-    public Queue waitingList;
+    private Queue headChef;
+    private Queue sousChef;
+    private Queue waitingList;
 
     public RestaurantOrders() {
         // Instantiate queues here

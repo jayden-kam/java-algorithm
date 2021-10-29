@@ -1,5 +1,6 @@
 package jayden.learn;
 
+import jayden.learn.cases.PizzaDelivery;
 import jayden.learn.cases.RestaurantOrders;
 import jayden.learn.ds.BinarySearch;
 import jayden.learn.ds.LinkedList;
@@ -13,7 +14,15 @@ public class App {
         //testNthLastNode();
         //testFindMiddle();
         //testBinarySearch();
-        testQueue();
+        //testQueue();
+        testStack();
+    }
+
+    private static void testStack() {
+        String[] pizzas = {"pepperoni", "cheese", "veggie", "meat", "hawaiian", "margherita"};
+        PizzaDelivery pizzaDelivery = new PizzaDelivery();
+        pizzaDelivery.assign(pizzas);
+        pizzaDelivery.deliver();
     }
 
     private static void testQueue() {
