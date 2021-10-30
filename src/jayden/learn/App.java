@@ -3,6 +3,7 @@ package jayden.learn;
 import jayden.learn.cases.PizzaDelivery;
 import jayden.learn.cases.RestaurantOrders;
 import jayden.learn.ds.BinarySearch;
+import jayden.learn.ds.HashMap;
 import jayden.learn.ds.LinkedList;
 
 import java.util.Arrays;
@@ -10,12 +11,28 @@ import java.util.Arrays;
 public class App {
 
     public static void main(String[] args) {
-        System.out.println("\n\n\n");
         //testNthLastNode();
         //testFindMiddle();
         //testBinarySearch();
         //testQueue();
-        testStack();
+        //testStack();
+        testHashMap();
+    }
+
+    private static void testHashMap() {
+        HashMap birdCensus = new HashMap(15);
+        String mandarinDuck = "mandarin duck";
+        birdCensus.assign(mandarinDuck, "Central Park Pond");
+        String monkParakeet = "monk parakeet";
+        birdCensus.assign(monkParakeet, "Brooklyn College");
+        String hornedOwl = "horned owl";
+        birdCensus.assign(hornedOwl, "Pelham Bay Park");
+        System.out.println("The [" + mandarinDuck + "] has been found in [" + birdCensus.retrieve(mandarinDuck) + "].");
+        System.out.println("The [" + monkParakeet + "] has been found in [" + birdCensus.retrieve(monkParakeet) + "].");
+        System.out.println("The [" + hornedOwl + "] has been found in [" + birdCensus.retrieve(hornedOwl) + "].");
+        String birdFlew = mandarinDuck;
+        birdCensus.delete(birdFlew);
+        System.out.println("The [" + birdFlew + "] has flown away!");
     }
 
     private static void testStack() {
