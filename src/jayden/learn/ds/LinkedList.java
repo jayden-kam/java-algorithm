@@ -16,6 +16,20 @@ public class LinkedList {
         return this.head == null ? null : this.head.getData();
     }
 
+    public boolean isExist(Object data) {
+        return isExist(data, head);
+    }
+
+    private boolean isExist(Object data, Node node) {
+        if (node == null) {
+            return false;
+        } else if (node.getData().equals(data)) {
+            return true;
+        } else {
+            return isExist(data, node.getNext());
+        }
+    }
+
     public Object findMiddleAlt() {
         Node chaser = this.head, seeker = this.head;
         int count = 0;

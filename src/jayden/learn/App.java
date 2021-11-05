@@ -1,5 +1,6 @@
 package jayden.learn;
 
+import jayden.learn.cases.Factorial;
 import jayden.learn.cases.PizzaDelivery;
 import jayden.learn.cases.RestaurantOrders;
 import jayden.learn.ds.BinarySearch;
@@ -16,7 +17,29 @@ public class App {
         //testBinarySearch();
         //testQueue();
         //testStack();
-        testHashMap();
+        //testHashMap();
+        testIterativeFactorial(10);
+        testIterativeFactorial(5);
+        testIterativeFactorial(0);
+        testRecursiveFactorial(10);
+        testRecursiveFactorial(5);
+        testRecursiveFactorial(0);
+        testRecursiveInLinkedList();
+    }
+
+    private static void testRecursiveInLinkedList() {
+        LinkedList list = generateAscendLinkedList(9);
+        int number = 10;
+        System.out.print(number + " " + (list.isExist(number) ? "exists" : "doesn't") + " in list ");
+        list.printList();
+    }
+
+    private static void testIterativeFactorial(int number) {
+        System.out.println(number + "! = " + Factorial.iterativeFactorial(number));
+    }
+
+    private static void testRecursiveFactorial(int number) {
+        System.out.println(number + "! = " + Factorial.recursiveFactorial(number));
     }
 
     private static void testHashMap() {
