@@ -1,5 +1,6 @@
 package jayden.learn;
 
+import jayden.learn.al.SortingAlgorithm;
 import jayden.learn.cases.Factorial;
 import jayden.learn.cases.PizzaDelivery;
 import jayden.learn.cases.RestaurantOrders;
@@ -26,7 +27,40 @@ public class App {
         //testRecursiveInLinkedList();
         //testTree();
         //testBinarySearchTree();
-        testMinHeap();
+        //testMinHeap();
+        //testBubbleSort();
+        //testMergeSort();
+        testQuickSort();
+    }
+
+    private static void testQuickSort() {
+        int[] arr = new int[10];
+        Random r = new Random();
+        for (int i = 0; i < 10; i++) {
+            int int_random = r.nextInt(100);
+            arr[i] = int_random;
+        }
+        System.out.println(Arrays.toString(SortingAlgorithm.quickSort(arr)));
+    }
+
+    private static void testMergeSort() {
+        int[] arr = new int[10];
+        Random r = new Random();
+        for (int i = 0; i < 10; i++) {
+            int int_random = r.nextInt(100);
+            arr[i] = int_random;
+        }
+        System.out.println(Arrays.toString(SortingAlgorithm.mergeSort(arr)));
+    }
+
+    private static void testBubbleSort() {
+        int[] arr = new int[10];
+        Random r = new Random();
+        for (int i = 0; i < 10; i++) {
+            int int_random = r.nextInt(100);
+            arr[i] = int_random;
+        }
+        System.out.println(Arrays.toString(SortingAlgorithm.bubbleSort(arr)));
     }
 
     private static void testMinHeap() {
