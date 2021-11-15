@@ -16,6 +16,10 @@ public class Queue {
         this.size = 0;
     }
 
+    public boolean isNotEmpty() {
+        return !isEmpty();
+    }
+
     public boolean isEmpty() {
         return this.size == 0;
     }

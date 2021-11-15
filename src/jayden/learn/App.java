@@ -3,11 +3,10 @@ package jayden.learn;
 import jayden.learn.cases.Factorial;
 import jayden.learn.cases.PizzaDelivery;
 import jayden.learn.cases.RestaurantOrders;
-import jayden.learn.ds.BinarySearch;
-import jayden.learn.ds.HashMap;
-import jayden.learn.ds.LinkedList;
+import jayden.learn.ds.*;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class App {
 
@@ -18,13 +17,101 @@ public class App {
         //testQueue();
         //testStack();
         //testHashMap();
-        testIterativeFactorial(10);
-        testIterativeFactorial(5);
-        testIterativeFactorial(0);
-        testRecursiveFactorial(10);
-        testRecursiveFactorial(5);
-        testRecursiveFactorial(0);
-        testRecursiveInLinkedList();
+        //testIterativeFactorial(10);
+        //testIterativeFactorial(5);
+        //testIterativeFactorial(0);
+        //testRecursiveFactorial(10);
+        //testRecursiveFactorial(5);
+        //testRecursiveFactorial(0);
+        //testRecursiveInLinkedList();
+        //testTree();
+        //testBinarySearchTree();
+        testMinHeap();
+    }
+
+    private static void testMinHeap() {
+        MinHeap minHeap = new MinHeap();
+        // Populate minHeap with 10 random numbers
+        Random r = new Random();
+        for (int i = 0; i < 10; i++) {
+            System.out.println("-------------");
+            int int_random = r.nextInt(40);
+            System.out.println("Adding value [" + int_random + "]");
+            minHeap.add(int_random);
+        }
+        // Display the heap after bubbling up
+        System.out.println("-------------");
+        System.out.println("BUBBLED UP: " + minHeap);
+        for (int i = 0; i < 10; i++) {
+            System.out.println("--------------");
+            minHeap.pop();
+            System.out.println("HEAPIFIED: " + minHeap);
+        }
+    }
+
+    private static void testBinarySearchTree() {
+        int rootValue = (int) (Math.random() * 100);
+        System.out.println("Creating Binary Search Tree rooted at value " + rootValue + ".");
+        BinarySearchTree tree = new BinarySearchTree(rootValue);
+        tree.print();
+        for (int i = 0; i < 10; i++) {
+            int addedValue = (int) (Math.random() * 100);
+            tree.insert(addedValue);
+            System.out.println("Add value " + addedValue + " to Binary Search Tree.");
+            tree.print();
+        }
+        System.out.println("Printing the inorder depth-first traversal:");
+        tree.depthFirstTraversal();
+        System.out.println();
+    }
+
+    private static void testTree() {
+        TreeNode animals = new TreeNode("Animals");
+        TreeNode reptile = new TreeNode("Reptiles");
+        TreeNode mammals = new TreeNode("Mammals");
+        animals.addChild(reptile);
+        animals.addChild(mammals);
+        reptile.addChild("Lizard");
+        reptile.addChild("Snake");
+        TreeNode equine = new TreeNode("Equine");
+        TreeNode bovine = new TreeNode("Bovine");
+        TreeNode marsupial = new TreeNode("Marsupial");
+        mammals.addChild(equine);
+        mammals.addChild(bovine);
+        mammals.addChild(marsupial);
+        equine.addChild("Horse");
+        equine.addChild("Zebra");
+        bovine.addChild("Husky");
+        TreeNode koala = new TreeNode("Koala");
+        marsupial.addChild(koala);
+        koala.addChild("TEST");
+        Tree animalTree = new Tree(animals);
+        animals.removeChild("Husky");
+        bovine.addChild("Cow");
+        marsupial.addChild("Kangaroo");
+        animalTree.print();
+        System.out.println("Max depth is " + animalTree.maxDepth());
+        int level = 1;
+        System.out.println("Printing Level " + level);
+        animalTree.printAt(level);
+        System.out.println();
+        level = 2;
+        System.out.println("Printing Level " + level);
+        animalTree.printAt(level);
+        System.out.println();
+        level = 3;
+        System.out.println("Printing Level " + level);
+        animalTree.printAt(level);
+        System.out.println();
+        level = 4;
+        System.out.println("Printing Level " + level);
+        animalTree.printAt(level);
+        System.out.println();
+        System.out.println("Printing DFS Traversal:");
+        animalTree.depthFirstTraversal(animals);
+        System.out.println();
+        System.out.println("Printing BFS Traversal:");
+        animalTree.breadthFirstTraversal();
     }
 
     private static void testRecursiveInLinkedList() {
