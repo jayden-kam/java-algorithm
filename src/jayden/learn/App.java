@@ -1,10 +1,12 @@
 package jayden.learn;
 
-import jayden.learn.al.SortingAlgorithm;
 import jayden.learn.cases.Factorial;
 import jayden.learn.cases.PizzaDelivery;
 import jayden.learn.cases.RestaurantOrders;
+import jayden.learn.cases.SortingAlgorithm;
 import jayden.learn.ds.*;
+import jayden.learn.graph.Graph;
+import jayden.learn.graph.Vertex;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -30,7 +32,71 @@ public class App {
         //testMinHeap();
         //testBubbleSort();
         //testMergeSort();
-        testQuickSort();
+        //testQuickSort();
+        //testGraph();
+        testGraphSearchAlgorithm();
+    }
+
+    private static void testGraphSearchAlgorithm() {
+        System.out.println("\n\n\n");
+        Graph testGraph = new Graph(false, true);
+        Vertex startNode = testGraph.addVertex("v0.0.0");
+        Vertex v1 = testGraph.addVertex("v1.0.0");
+        Vertex v2 = testGraph.addVertex("v2.0.0");
+
+        Vertex v11 = testGraph.addVertex("v1.1.0");
+        Vertex v12 = testGraph.addVertex("v1.2.0");
+        Vertex v21 = testGraph.addVertex("v2.1.0");
+
+        Vertex v111 = testGraph.addVertex("v1.1.1");
+        Vertex v112 = testGraph.addVertex("v1.1.2");
+        Vertex v121 = testGraph.addVertex("v1.2.1");
+        Vertex v211 = testGraph.addVertex("v2.1.1");
+
+        testGraph.addEdge(startNode, v1, null);
+        testGraph.addEdge(startNode, v2, null);
+
+        testGraph.addEdge(v1, v11, null);
+        testGraph.addEdge(v1, v12, null);
+        testGraph.addEdge(v2, v21, null);
+
+        testGraph.addEdge(v11, v111, null);
+        testGraph.addEdge(v11, v112, null);
+        testGraph.addEdge(v12, v121, null);
+        testGraph.addEdge(v21, v211, null);
+
+        // create a cycle
+        testGraph.addEdge(v211, v2, null);
+
+        testGraph.depthFirstTraversal(startNode);
+        System.out.println();
+        testGraph.breadthFirstTraversal(startNode);
+        System.out.println("\n\n\n");
+    }
+
+    private static void testGraph() {
+        System.out.println("\n\n\n");
+        Graph trainNetwork = new Graph(true, true);
+        Vertex a = trainNetwork.addVertex("Los Angeles");
+        Vertex b = trainNetwork.addVertex("San Francisco");
+        Vertex c = trainNetwork.addVertex("New York");
+        Vertex d = trainNetwork.addVertex("Atlanta");
+        Vertex e = trainNetwork.addVertex("Denver");
+        Vertex f = trainNetwork.addVertex("Calgary");
+        trainNetwork.addEdge(b, a, 400);
+        trainNetwork.addEdge(a, b, 400);
+        trainNetwork.addEdge(c, e, 1800);
+        trainNetwork.addEdge(e, c, 1800);
+        trainNetwork.addEdge(f, e, 1000);
+        trainNetwork.addEdge(e, f, 1000);
+        trainNetwork.addEdge(a, d, 2100);
+        trainNetwork.addEdge(d, a, 2100);
+        trainNetwork.removeEdge(c, e);
+        trainNetwork.removeEdge(f, e);
+        trainNetwork.removeEdge(e, f);
+        trainNetwork.removeVertex(f);
+        trainNetwork.print();
+        System.out.println("\n\n\n");
     }
 
     private static void testQuickSort() {

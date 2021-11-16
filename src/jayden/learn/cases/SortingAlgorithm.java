@@ -1,4 +1,4 @@
-package jayden.learn.al;
+package jayden.learn.cases;
 
 import java.util.Arrays;
 
