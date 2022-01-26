@@ -6,6 +6,7 @@ import jayden.learn.graph.Graph;
 import jayden.learn.graph.Vertex;
 
 import java.util.Arrays;
+import java.util.Map;
 import java.util.Random;
 
 public class App {
@@ -32,7 +33,20 @@ public class App {
         //testQuickSort();
         //testGraph();
         //testGraphSearchAlgorithm();
-        testDijkstraAlgorithm();
+        //testDijkstraAlgorithm();
+        testFibonacciMemoization();
+    }
+
+    private static void testFibonacciMemoization() {
+        long start = System.currentTimeMillis();
+        Map<Integer, Long> map = new java.util.HashMap<>();
+        System.out.println(Fibonacci.fibMemo(50, map));
+        long end = System.currentTimeMillis();
+        System.out.println("Time Consumption: " + (end - start));
+        start = System.currentTimeMillis();
+        System.out.println(Fibonacci.fib(50));
+        end = System.currentTimeMillis();
+        System.out.println("Time Consumption: " + (end - start));
     }
 
     private static void testDijkstraAlgorithm() {
