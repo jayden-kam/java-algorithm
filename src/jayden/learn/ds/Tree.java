@@ -9,13 +9,13 @@ public class Tree {
     }
 
     public int maxDepth() {
-        return maxDepth(0, this.root);
+        return maxDepth(this.root);
     }
 
-    private int maxDepth(int level, TreeNode node) {
+    private int maxDepth(TreeNode node) {
         int maxDepth = 0;
         for (TreeNode child : node.getChildren()) {
-            maxDepth = Math.max(maxDepth, maxDepth(level++, child));
+            maxDepth = Math.max(maxDepth, maxDepth(child));
         }
         return maxDepth + 1;
     }

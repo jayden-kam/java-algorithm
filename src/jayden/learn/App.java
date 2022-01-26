@@ -1,9 +1,6 @@
 package jayden.learn;
 
-import jayden.learn.cases.Factorial;
-import jayden.learn.cases.PizzaDelivery;
-import jayden.learn.cases.RestaurantOrders;
-import jayden.learn.cases.SortingAlgorithm;
+import jayden.learn.cases.*;
 import jayden.learn.ds.*;
 import jayden.learn.graph.Graph;
 import jayden.learn.graph.Vertex;
@@ -34,7 +31,35 @@ public class App {
         //testMergeSort();
         //testQuickSort();
         //testGraph();
-        testGraphSearchAlgorithm();
+        //testGraphSearchAlgorithm();
+        testDijkstraAlgorithm();
+    }
+
+    private static void testDijkstraAlgorithm() {
+        System.out.println();
+
+        Graph testGraph = new Graph(true, true);
+        Vertex a = testGraph.addVertex("A");
+        Vertex b = testGraph.addVertex("B");
+        Vertex c = testGraph.addVertex("C");
+        Vertex d = testGraph.addVertex("D");
+        Vertex e = testGraph.addVertex("E");
+        Vertex f = testGraph.addVertex("F");
+        Vertex g = testGraph.addVertex("G");
+
+        testGraph.addEdge(a, c, 100);
+        testGraph.addEdge(a, b, 3);
+        testGraph.addEdge(a, d, 4);
+        testGraph.addEdge(d, c, 3);
+        testGraph.addEdge(d, e, 8);
+        testGraph.addEdge(e, b, -2);
+        testGraph.addEdge(e, f, 10);
+        testGraph.addEdge(b, g, 9);
+        testGraph.addEdge(e, g, -50);
+
+        DijkstraAlgorithm.print(DijkstraAlgorithm.dijkstra(testGraph, d));
+        System.out.println();
+        DijkstraAlgorithm.shortestPathBetween(testGraph, d, g);
     }
 
     private static void testGraphSearchAlgorithm() {
@@ -184,7 +209,7 @@ public class App {
         bovine.addChild("Husky");
         TreeNode koala = new TreeNode("Koala");
         marsupial.addChild(koala);
-        koala.addChild("TEST");
+        //        koala.addChild("TEST");
         Tree animalTree = new Tree(animals);
         animals.removeChild("Husky");
         bovine.addChild("Cow");
