@@ -34,7 +34,22 @@ public class App {
         //testGraph();
         //testGraphSearchAlgorithm();
         //testDijkstraAlgorithm();
-        testFibonacciMemoization();
+        //testFibonacciMemoization();
+        testCapturingRainwater();
+    }
+
+    private static void testCapturingRainwater() {
+        /*int[] heights = {4, 2, 1, 3, 0, 1, 2};
+        System.out.println(Arrays.toString(heights));
+        System.out.println("Result: " + CapturingRainwater.naiveSolution(heights));
+        System.out.println("Result: " + CapturingRainwater.efficientSolution(heights));*/
+        Random random = new Random();
+        int[] heights = new int[100000];
+        for (int i = 0; i < heights.length; i++) {
+            heights[i] = random.nextInt(10);
+        }
+        System.out.println("Result: " + CapturingRainwater.naiveSolution(heights));
+        System.out.println("Result: " + CapturingRainwater.efficientSolution(heights));
     }
 
     private static void testFibonacciMemoization() {
