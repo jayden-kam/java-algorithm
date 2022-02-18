@@ -18,6 +18,7 @@ The foundation of this problem is that the amount of rainwater at any given inde
 2) the height of the bar at the given index.
 
 waterAtIndex = Math.min(highestLeftBound, highestRightBound) - heightOfIndex;
+
 */
 public class CapturingRainwater {
 

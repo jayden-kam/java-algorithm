@@ -12,30 +12,33 @@ import java.util.Random;
 public class App {
 
     public static void main(String[] args) {
-        //testNthLastNode();
-        //testFindMiddle();
-        //testBinarySearch();
-        //testQueue();
-        //testStack();
-        //testHashMap();
-        //testIterativeFactorial(10);
-        //testIterativeFactorial(5);
-        //testIterativeFactorial(0);
-        //testRecursiveFactorial(10);
-        //testRecursiveFactorial(5);
-        //testRecursiveFactorial(0);
-        //testRecursiveInLinkedList();
-        //testTree();
-        //testBinarySearchTree();
-        //testMinHeap();
-        //testBubbleSort();
-        //testMergeSort();
-        //testQuickSort();
-        //testGraph();
-        //testGraphSearchAlgorithm();
-        //testDijkstraAlgorithm();
-        //testFibonacciMemoization();
-        testCapturingRainwater();
+        testKnapsackProblem();
+    }
+
+    private static void testKnapsackProblem() {
+        int weightCap = 5;
+        int[] weights = {1, 3, 5};
+        int[] values = {250, 300, 500};
+        int item = 3;
+        /*Random random = new Random();
+        int weightCap = 10;
+        int[] weights = new int[100];
+        for (int i = 0; i < weights.length; i++) {
+            weights[i] = random.nextInt(10);
+        }
+        int[] values = new int[100];
+        for (int i = 0; i < values.length; i++) {
+            values[i] = random.nextInt(10);
+        }
+        int item = 100;*/
+        long start = System.currentTimeMillis();
+        System.out.println("Max value collect: " + KnapsackProblem.recursiveSolution(weightCap, weights, values, item));
+        long end = System.currentTimeMillis();
+        System.out.println("Recursive time consumption: " + (end - start));
+        start = System.currentTimeMillis();
+        System.out.println("Max value collect: " + KnapsackProblem.dynamicSolution(weightCap, weights, values, item));
+        end = System.currentTimeMillis();
+        System.out.println("Dynamic time consumption: " + (end - start));
     }
 
     private static void testCapturingRainwater() {
