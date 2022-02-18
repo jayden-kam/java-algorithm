@@ -8,11 +8,30 @@ import jayden.learn.graph.Vertex;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Random;
+import java.util.Scanner;
 
 public class App {
 
     public static void main(String[] args) {
-        testKnapsackProblem();
+        testSieveOfEratosthenes();
+    }
+
+    private static void testSieveOfEratosthenes() {
+        System.out.print("Input limit number:");
+        Scanner scanner = new Scanner(System.in);
+        try {
+            int limit = Integer.parseInt(scanner.nextLine());
+            long start = System.currentTimeMillis();
+            SieveOfEratosthenes.solution(limit);
+            long end = System.currentTimeMillis();
+            System.out.println("Basic solution time consumption: " + (end - start));
+            start = System.currentTimeMillis();
+            SieveOfEratosthenes.optimizeSolution(limit);
+            end = System.currentTimeMillis();
+            System.out.println("Optimised solution time consumption: " + (end - start));
+        } catch (Exception e) {
+            System.err.println("Bad Input!");
+        }
     }
 
     private static void testKnapsackProblem() {
