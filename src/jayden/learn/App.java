@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class App {
 
     public static void main(String[] args) {
-        testSieveOfEratosthenes();
+        //test what you want
     }
 
     private static void testSieveOfEratosthenes() {

@@ -1,4 +1,4 @@
-package jayden.learn.ds;
+package jayden.learn.cases;
 
 public class BinarySearch {
 
