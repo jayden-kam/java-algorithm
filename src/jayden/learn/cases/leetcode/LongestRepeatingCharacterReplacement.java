@@ -57,19 +57,19 @@ public class LongestRepeatingCharacterReplacement {
     }
 
     public static void main(String[] args) {
-        testCaseOne();
-        testCaseTwo();
+        testcaseOne();
+        testcaseTwo();
     }
 
-    public static void testCaseOne() {
+    public static void testcaseOne() {
         String s = "AABABBA";
         int k = 1;
-        System.out.println("Test case 1: " + (4 == characterReplacement(s, k) ? "Passed" : "Failed"));
+        System.out.println("Testcase 1: " + (4 == characterReplacement(s, k) ? "Passed" : "Failed"));
     }
 
-    public static void testCaseTwo() {
+    public static void testcaseTwo() {
         String s = "ABBB";
         int k = 2;
-        System.out.println("Test case 2: " + (4 == characterReplacement(s, k) ? "Passed" : "Failed"));
+        System.out.println("Testcase 2: " + (4 == characterReplacement(s, k) ? "Passed" : "Failed"));
     }
 }
