@@ -3,10 +3,41 @@ package jayden.learn.cases.leetcode;
 public class LinkedListProblems {
 
     public static void main(String[] args) {
+        testPartitionList();
         testReverseLinkedListII();
     }
 
+    public static void testPartitionList() {
+        System.out.println("Partition List:");
+        {
+            ListNode n2 = new ListNode(2, null);
+            ListNode n5 = new ListNode(5, n2);
+            ListNode n2_ = new ListNode(2, n5);
+            ListNode n3 = new ListNode(3, n2_);
+            ListNode n4 = new ListNode(4, n3);
+            ListNode n1 = new ListNode(1, n4);
+            LinkedListProblems solution = new LinkedListProblems();
+            if ("[1, 2, 2, 4, 3, 5]".equals(solution.partition(n1, 3).toString())) {
+                System.out.println("Testcase 1: passed");
+            } else {
+                System.err.println("Testcase 1: failed");
+            }
+        }
+        {
+            ListNode n1 = new ListNode(1, null);
+            ListNode n2 = new ListNode(2, n1);
+            LinkedListProblems solution = new LinkedListProblems();
+            if ("[1, 2]".equals(solution.partition(n2, 2).toString())) {
+                System.out.println("Testcase 2: passed");
+            } else {
+                System.err.println("Testcase 2: failed");
+            }
+        }
+        System.out.println("=========================");
+    }
+
     public static void testReverseLinkedListII() {
+        System.out.println("Reverse LinkedList II:");
         {
             ListNode n5 = new ListNode(5, null);
             ListNode n4 = new ListNode(4, n5);
@@ -29,6 +60,53 @@ public class LinkedListProblems {
                 System.err.println("Testcase 2: failed");
             }
         }
+        System.out.println("=========================");
+    }
+
+    /*
+    Partition List
+
+    Given the head of a linked list and a value x,
+     partition it such that all nodes less than x come before nodes greater than or equal to x.
+
+    You should preserve the original relative order of the nodes in each of the two partitions.
+
+
+    Example 1:
+
+    Input: head = [1,4,3,2,5,2], x = 3
+    Output: [1,2,2,4,3,5]
+
+
+    Example 2:
+
+    Input: head = [2,1], x = 2
+    Output: [1,2]
+    */
+    public ListNode partition(ListNode head, int x) {
+        ListNode L, G = null, S;
+        ListNode dummyHead = new ListNode(0, head);
+        L = dummyHead;
+        ListNode node = dummyHead.next;
+        while (node != null) {
+            if (node.val < x) {
+                if (G == null) {
+                    L = node;
+                } else {
+                    S = node;
+                    ListNode temp = L.next;
+                    L.next = S;
+                    G.next = S.next;
+                    S.next = temp;
+                    L = L.next;
+                    node = G;
+                }
+            } else {
+                G = node;
+            }
+            node = node.next;
+        }
+        return dummyHead.next;
     }
 
     /*
@@ -70,6 +148,7 @@ public class LinkedListProblems {
     }
 
     static class ListNode {
+
         int val;
         ListNode next;
 
