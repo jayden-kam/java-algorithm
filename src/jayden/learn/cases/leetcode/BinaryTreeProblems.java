@@ -101,6 +101,21 @@ public class BinaryTreeProblems {
         }
     }
 
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if (root == null || root.val == p.val || root.val == q.val) {
+            return root;
+        }
+        TreeNode left = lowestCommonAncestor(root.left, p, q);
+        TreeNode right = lowestCommonAncestor(root.right, p, q);
+        if (left == null) {
+            return right;
+        } else if (right == null) {
+            return left;
+        } else {
+            return root;
+        }
+    }
+
     /*
     Given two integer arrays preorder and inorder where preorder is the preorder traversal
         of a binary tree and inorder is the inorder traversal of the same tree, construct and return the binary tree.
