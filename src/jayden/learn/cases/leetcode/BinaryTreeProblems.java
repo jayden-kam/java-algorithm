@@ -5,9 +5,21 @@ import java.util.*;
 public class BinaryTreeProblems {
 
     public static void main(String[] args) {
+        testFlattenBinaryTreeToLinkedList();
         testBinaryTreeRightSideView();
         testBinaryTreeLevelOrderTraversal();
         testConstructBinaryTreeFromPreorderAndInorderTraversal();
+    }
+
+    public static void testFlattenBinaryTreeToLinkedList() {
+        BinaryTreeProblems solution = new BinaryTreeProblems();
+        TreeNode n6 = new TreeNode(6, null, null);
+        TreeNode n5 = new TreeNode(5, null, n6);
+        TreeNode n4 = new TreeNode(4, null, null);
+        TreeNode n3 = new TreeNode(3, null, null);
+        TreeNode n2 = new TreeNode(2, n3, n4);
+        TreeNode n1 = new TreeNode(1, n2, n5);
+        solution.flatten(n1);
     }
 
     public static void testConstructBinaryTreeFromPreorderAndInorderTraversal() {
@@ -101,6 +113,47 @@ public class BinaryTreeProblems {
         }
     }
 
+    /*
+    Given the root of a binary tree, flatten the tree into a "linked list":
+
+    The "linked list" should use the same TreeNode class where the right
+     child pointer points to the next node in the list and the left child pointer is always null.
+    The "linked list" should be in the same order as a pre-order traversal of the binary tree.
+    */
+    public void flatten(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        flat(root);
+    }
+
+    private TreeNode flat(TreeNode node) {
+        if (node.left == null && node.right == null) {
+            return node;
+        }
+        TreeNode leftTail = null, rightTail = null;
+        if (node.left != null) {
+            leftTail = flat(node.left);
+        }
+        if (node.right != null) {
+            rightTail = flat(node.right);
+        }
+        if (leftTail != null) {
+            TreeNode temp = node.right;
+            node.right = node.left;
+            node.left = null;
+            leftTail.right = temp;
+        }
+        return rightTail == null ? leftTail : rightTail;
+    }
+
+    /*
+    Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree.
+
+    According to the definition of LCA on Wikipedia:
+        “The lowest common ancestor is defined between two nodes p and q as the lowest node in T that
+         has both p and q as descendants (where we allow a node to be a descendant of itself).”
+    */
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if (root == null || root.val == p.val || root.val == q.val) {
             return root;
